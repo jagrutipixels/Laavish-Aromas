@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, ArrowLeft, Plus, Minus, ShoppingBag } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { ALL_PRODUCTS, Product } from '../types';
 import React, { useState, useMemo } from 'react';
 
@@ -55,6 +56,14 @@ export default function ProductDetail({ addToCart }: ProductDetailProps) {
 
   return (
     <div className="pt-32 pb-32 max-w-7xl mx-auto px-6">
+      <Helmet>
+        <title>{product.name} | Laavish Aromas Luxury Fragrance</title>
+        <meta name="description" content={`${product.name}: ${product.description.substring(0, 150)}... Discover this ${product.category} scent with notes of ${product.notes}.`} />
+        <meta name="keywords" content={`${product.name}, ${product.notes}, luxury perfume, ${product.category} fragrance`} />
+        <meta property="og:title" content={`${product.name} | Laavish Aromas`} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.image} />
+      </Helmet>
       <Link to="/collection" className="inline-flex items-center space-x-2 text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition-colors mb-12">
         <ArrowLeft className="w-3 h-3" />
         <span>Back to Collection</span>

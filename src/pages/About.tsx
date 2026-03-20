@@ -1,8 +1,14 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 
 export default function About() {
   return (
     <div className="pt-32 pb-32">
+      <Helmet>
+        <title>Our Story | Laavish Aromas Luxury Perfumery</title>
+        <meta name="description" content="Learn about the heritage and artistry of Laavish Aromas. Discover our journey of crafting memories through scent and our commitment to sustainable luxury." />
+        <meta name="keywords" content="about laavish aromas, perfume heritage, sustainable luxury, artisanal fragrance history" />
+      </Helmet>
       <section className="max-w-7xl mx-auto px-6 mb-32">
         <div className="text-center mb-24">
           <span className="text-yellow-600 text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>

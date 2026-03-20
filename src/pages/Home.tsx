@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowUpRight, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ALL_PRODUCTS, Product } from '../types';
 import { useState } from 'react';
 
@@ -42,6 +43,11 @@ export default function Home({ addToCart, setToast }: HomeProps) {
 
   return (
     <div className="overflow-hidden">
+      <Helmet>
+        <title>Laavish Aromas | Luxury Perfumery & Signature Fragrances</title>
+        <meta name="description" content="Discover the essence of elegance with Laavish Aromas. Explore our signature collection of luxury perfumes, trending scents, and latest arrivals." />
+        <meta name="keywords" content="luxury perfume, signature fragrances, designer scents, Laavish Aromas, artisanal perfumery" />
+      </Helmet>
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

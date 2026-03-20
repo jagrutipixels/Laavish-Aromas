@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 interface ContactProps {
   setToast: (msg: string) => void;
@@ -7,6 +8,11 @@ interface ContactProps {
 export default function Contact({ setToast }: ContactProps) {
   return (
     <div className="pt-32 pb-32">
+      <Helmet>
+        <title>Contact Us | Laavish Aromas Concierge</title>
+        <meta name="description" content="Get in touch with Laavish Aromas. Visit our flagship boutique in Paris or contact our fragrance experts for personalized assistance." />
+        <meta name="keywords" content="contact laavish aromas, perfume boutique paris, customer care, fragrance experts" />
+      </Helmet>
       <section className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24">
           <span className="text-yellow-600 text-[10px] uppercase tracking-[0.5em] mb-4 block">Get In Touch</span>

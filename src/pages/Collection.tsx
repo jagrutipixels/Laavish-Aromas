@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ALL_PRODUCTS, Product } from '../types';
 
 interface CollectionProps {
@@ -17,6 +18,11 @@ export default function Collection({ addToCart }: CollectionProps) {
 
   return (
     <div className="pt-32 pb-32">
+      <Helmet>
+        <title>Collection | Laavish Aromas Luxury Fragrances</title>
+        <meta name="description" content="Explore the full collection of Laavish Aromas luxury fragrances. From signature scents to limited editions, find your perfect olfactory identity." />
+        <meta name="keywords" content="perfume collection, luxury scents, signature perfumes, Laavish Aromas catalog" />
+      </Helmet>
       <section className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl mb-4 font-serif">The Collection</h1>
