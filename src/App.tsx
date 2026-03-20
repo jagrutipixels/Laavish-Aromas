@@ -10,7 +10,8 @@ import {
   Minus,
   Trash2,
   CheckCircle2,
-  ShoppingBag
+  ShoppingBag,
+  ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
@@ -42,6 +43,19 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null);
   const [checkoutStep, setCheckoutStep] = useState(1);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     if (toast) {
@@ -174,7 +188,7 @@ export default function App() {
                     
                     {checkoutStep === 1 ? (
                       <div className="space-y-6">
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400">First Name</label><input type="text" className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-yellow-600" /></div>
                           <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400">Last Name</label><input type="text" className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-yellow-600" /></div>
                         </div>
@@ -195,6 +209,22 @@ export default function App() {
                 )}
               </motion.div>
             </>
+          )}
+        </AnimatePresence>
+
+        {/* Scroll to Top Button */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-[90] bg-black text-white p-3 rounded-full shadow-2xl hover:bg-yellow-600 transition-colors"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </motion.button>
           )}
         </AnimatePresence>
 

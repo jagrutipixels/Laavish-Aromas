@@ -57,7 +57,7 @@ export default function Contact({ setToast }: ContactProps) {
           </div>
           <div className="bg-white p-8 md:p-16 shadow-2xl rounded-sm">
             <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); setToast("Message sent successfully!"); }}>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest text-gray-400">Name</label>
                   <input required type="text" className="w-full border-b border-gray-100 py-2 focus:outline-none focus:border-yellow-600 transition-colors" />

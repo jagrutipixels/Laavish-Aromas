@@ -45,7 +45,7 @@ export default function Navbar({ cartCount, setIsCartOpen }: NavbarProps) {
     <>
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled || location.pathname !== '/' ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6 text-white'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold tracking-widest uppercase font-serif">
+          <Link to="/" className="text-xl md:text-2xl font-bold tracking-widest uppercase font-serif">
             Laavish <span className="text-yellow-600">Aromas</span>
           </Link>
           

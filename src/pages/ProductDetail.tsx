@@ -93,11 +93,11 @@ export default function ProductDetail({ addToCart }: ProductDetailProps) {
             <p className="text-gray-500 font-light leading-relaxed text-lg mb-10">{product.description}</p>
             <div className="text-4xl font-serif mb-12">${product.price.toFixed(2)}</div>
             
-            <div className="flex items-center space-x-8 mb-12">
-              <div className="flex items-center border border-gray-200 rounded-full px-6 py-3 space-x-8">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))}><Minus className="w-4 h-4" /></button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-8 mb-12">
+              <div className="flex items-center justify-between sm:justify-start border border-gray-200 rounded-full px-6 py-3 space-x-8">
+                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1"><Minus className="w-4 h-4" /></button>
                 <span className="text-sm font-medium w-4 text-center">{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}><Plus className="w-4 h-4" /></button>
+                <button onClick={() => setQuantity(quantity + 1)} className="p-1"><Plus className="w-4 h-4" /></button>
               </div>
               <button 
                 onClick={() => addToCart(product, quantity)} 
