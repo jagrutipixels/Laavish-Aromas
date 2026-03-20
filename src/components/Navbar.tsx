@@ -45,8 +45,13 @@ export default function Navbar({ cartCount, setIsCartOpen }: NavbarProps) {
     <>
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled || location.pathname !== '/' ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6 text-white'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="text-xl md:text-2xl font-bold tracking-widest uppercase font-serif">
-            Laavish <span className="text-yellow-600">Aromas</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/68748921cca8c56d7cd651d305f8dac096261d6d/Laavish_Aromas_File-whatsapp.jpg" 
+              alt="Laavish Aromas Logo" 
+              className="h-12 md:h-16 w-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
           </Link>
           
           <div className="hidden md:flex space-x-10 font-medium uppercase text-[10px] tracking-[0.3em]">

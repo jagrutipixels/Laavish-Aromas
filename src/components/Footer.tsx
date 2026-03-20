@@ -7,8 +7,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <div className="text-2xl font-bold tracking-widest uppercase font-serif mb-6">
-              Laavish <span className="text-yellow-600">Aromas</span>
+            <div className="mb-6">
+              <img 
+                src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/68748921cca8c56d7cd651d305f8dac096261d6d/Laavish_Aromas_File-whatsapp.jpg" 
+                alt="Laavish Aromas Logo" 
+                className="h-16 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <p className="text-gray-400 font-light max-w-sm">
               Crafting luxury fragrances that capture the essence of elegance and sophistication.
