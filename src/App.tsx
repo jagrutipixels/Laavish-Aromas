@@ -37,6 +37,7 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -51,6 +52,14 @@ export default function App() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToTop = () => {
@@ -109,6 +118,29 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
+
+      {/* Initial Loader */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-[200] bg-[#0a0a0a] flex items-center justify-center"
+          >
+            <motion.img
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/03b8de36f875ff295d0974a6405b1fa64dd0f494/Laavish_Aromas_File_white.png"
+              alt="Laavish Aromas Loading"
+              className="h-24 md:h-32 w-auto object-contain animate-pulse"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="min-h-screen bg-[#faf9f6] text-gray-900 font-sans selection:bg-yellow-100 selection:text-yellow-900">
         
         {/* Toast */}

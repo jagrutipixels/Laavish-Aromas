@@ -192,24 +192,24 @@ export default function Home({ addToCart, setToast }: HomeProps) {
       {/* Quiz Modal */}
       <AnimatePresence>
         {isQuizOpen && (
-          <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsQuizOpen(false)} className="fixed inset-0 z-[110] bg-black/90 backdrop-blur-xl" />
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[120] bg-white max-w-xl w-full p-12 shadow-2xl rounded-sm">
-              <button onClick={() => setIsQuizOpen(false)} className="absolute top-6 right-6 hover:rotate-90 transition-transform"><X className="w-6 h-6" /></button>
-              <div className="text-center space-y-8">
-                <span className="text-yellow-600 text-[10px] uppercase tracking-widest">Question {quizStep + 1} of {quizQuestions.length}</span>
-                <h2 className="text-3xl font-serif">{quizQuestions[quizStep].question}</h2>
-                <div className="grid grid-cols-1 gap-4 pt-4">
-                  {quizQuestions[quizStep].options.map(option => (
-                    <button key={option} onClick={() => handleQuizAnswer(option)} className="w-full border border-gray-100 py-4 px-6 text-sm font-light hover:border-yellow-600 hover:bg-yellow-50 transition-all text-left flex justify-between items-center group">
-                      {option}
-                      <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </button>
-                  ))}
-                </div>
+          <motion.div key="quiz-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsQuizOpen(false)} className="fixed inset-0 z-[110] bg-black/90 backdrop-blur-xl" />
+        )}
+        {isQuizOpen && (
+          <motion.div key="quiz-modal" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[120] bg-white max-w-xl w-full p-12 shadow-2xl rounded-sm">
+            <button onClick={() => setIsQuizOpen(false)} className="absolute top-6 right-6 hover:rotate-90 transition-transform"><X className="w-6 h-6" /></button>
+            <div className="text-center space-y-8">
+              <span className="text-yellow-600 text-[10px] uppercase tracking-widest">Question {quizStep + 1} of {quizQuestions.length}</span>
+              <h2 className="text-3xl font-serif">{quizQuestions[quizStep].question}</h2>
+              <div className="grid grid-cols-1 gap-4 pt-4">
+                {quizQuestions[quizStep].options.map(option => (
+                  <button key={option} onClick={() => handleQuizAnswer(option)} className="w-full border border-gray-100 py-4 px-6 text-sm font-light hover:border-yellow-600 hover:bg-yellow-50 transition-all text-left flex justify-between items-center group">
+                    {option}
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </button>
+                ))}
               </div>
-            </motion.div>
-          </>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

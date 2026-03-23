@@ -85,6 +85,7 @@ export default function Navbar({ cartCount, setIsCartOpen }: NavbarProps) {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
+            key="mobile-menu"
             initial={{ x: '-100%' }} 
             animate={{ x: 0 }} 
             exit={{ x: '-100%' }} 
@@ -106,7 +107,7 @@ export default function Navbar({ cartCount, setIsCartOpen }: NavbarProps) {
       {/* Search Overlay */}
       <AnimatePresence>
         {isSearchOpen && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center pt-32 px-6">
+          <motion.div key="search-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center pt-32 px-6">
             <button onClick={() => setIsSearchOpen(false)} className="absolute top-8 right-8 hover:rotate-90 transition-transform duration-300"><X className="w-8 h-8" /></button>
             <div className="w-full max-w-2xl">
               <input 
