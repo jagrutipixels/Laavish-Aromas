@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowUpRight, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ALL_PRODUCTS, Product } from '../types';
 import { useState } from 'react';
@@ -11,6 +11,7 @@ interface HomeProps {
 }
 
 export default function Home({ addToCart, setToast }: HomeProps) {
+  const navigate = useNavigate();
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
@@ -37,7 +38,10 @@ export default function Home({ addToCart, setToast }: HomeProps) {
       setQuizStep(quizStep + 1);
     } else {
       const suggested = ALL_PRODUCTS[Math.floor(Math.random() * ALL_PRODUCTS.length)];
-      window.location.href = `/product/${suggested.id}`;
+      setIsQuizOpen(false);
+      setQuizStep(0);
+      setQuizAnswers([]);
+      navigate(`/product/${suggested.id}`);
     }
   };
 

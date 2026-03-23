@@ -9,9 +9,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
               <img 
-                src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/68748921cca8c56d7cd651d305f8dac096261d6d/Laavish_Aromas_File-whatsapp.jpg" 
+                src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/9dbdc0b8fa31c97196eaef90bc29198d82f2d4e2/black-centre-logo-upload.png" 
                 alt="Laavish Aromas Logo" 
-                className="h-16 w-auto object-contain"
+                className="h-20 w-auto object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>

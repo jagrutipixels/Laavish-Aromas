@@ -45,31 +45,31 @@ export default function Navbar({ cartCount, setIsCartOpen }: NavbarProps) {
     <>
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled || location.pathname !== '/' ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6 text-white'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center shrink-0">
             <img 
-              src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/68748921cca8c56d7cd651d305f8dac096261d6d/Laavish_Aromas_File-whatsapp.jpg" 
+              src="https://raw.githubusercontent.com/jagrutipixels/Laavish-Aromas/9dbdc0b8fa31c97196eaef90bc29198d82f2d4e2/black-centre-logo-upload.png" 
               alt="Laavish Aromas Logo" 
-              className="h-12 md:h-16 w-auto object-contain"
+              className="h-14 md:h-16 lg:h-24 w-auto object-contain transition-all duration-300"
               referrerPolicy="no-referrer"
             />
           </Link>
           
-          <div className="hidden md:flex space-x-10 font-medium uppercase text-[10px] tracking-[0.3em]">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10 font-medium uppercase text-xs lg:text-sm tracking-[0.15em] lg:tracking-[0.2em]">
             {navLinks.map(link => (
-              <Link key={link.path} to={link.path} className={`hover:text-yellow-600 transition-colors ${location.pathname === link.path ? 'text-yellow-600' : ''}`}>
+              <Link key={link.path} to={link.path} className={`hover:text-yellow-600 transition-colors whitespace-nowrap ${location.pathname === link.path ? 'text-yellow-600' : ''}`}>
                 {link.name}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-5 lg:space-x-6 shrink-0">
             <button onClick={() => setIsSearchOpen(true)} className="hover:text-yellow-600 transition-colors">
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
             <button onClick={() => setIsCartOpen(true)} className="hover:text-yellow-600 transition-colors relative">
-              <ShoppingBag className="w-5 h-5" />
+              <ShoppingBag className="w-5 h-5 lg:w-6 lg:h-6" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-yellow-600 text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1.5 -right-1.5 bg-yellow-600 text-white text-[9px] lg:text-[10px] w-4 h-4 lg:w-5 lg:h-5 rounded-full flex items-center justify-center font-bold">
                   {cartCount}
                 </span>
               )}

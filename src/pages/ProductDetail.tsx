@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Star, ArrowLeft, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { ALL_PRODUCTS, Product } from '../types';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 interface ProductDetailProps {
   addToCart: (product: Product, quantity: number) => void;
@@ -12,14 +12,21 @@ interface ProductDetailProps {
 export default function ProductDetail({ addToCart }: ProductDetailProps) {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
-  const [reviews, setReviews] = useState<{ name: string; date: string; rating: number; comment: string }[]>(() => {
+  const [reviews, setReviews] = useState<{ name: string; date: string; rating: number; comment: string }[]>([]);
+
+  useEffect(() => {
+    setQuantity(1);
     const saved = localStorage.getItem(`reviews-${id}`);
-    return saved ? JSON.parse(saved) : [
-      { name: "Eleanor R.", date: "Oct 12, 2023", rating: 5, comment: "Absolutely divine. The scent lingers beautifully throughout the day. I've received so many compliments!" },
-      { name: "Julian M.", date: "Sep 28, 2023", rating: 4, comment: "A very sophisticated fragrance. It's bold but not overpowering. Perfect for evening events." },
-      { name: "Sophia L.", date: "Aug 15, 2023", rating: 5, comment: "My new signature scent. The packaging is as luxurious as the fragrance itself. Highly recommend." }
-    ];
-  });
+    if (saved) {
+      setReviews(JSON.parse(saved));
+    } else {
+      setReviews([
+        { name: "Eleanor R.", date: "Oct 12, 2023", rating: 5, comment: "Absolutely divine. The scent lingers beautifully throughout the day. I've received so many compliments!" },
+        { name: "Julian M.", date: "Sep 28, 2023", rating: 4, comment: "A very sophisticated fragrance. It's bold but not overpowering. Perfect for evening events." },
+        { name: "Sophia L.", date: "Aug 15, 2023", rating: 5, comment: "My new signature scent. The packaging is as luxurious as the fragrance itself. Highly recommend." }
+      ]);
+    }
+  }, [id]);
 
   const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
   const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
